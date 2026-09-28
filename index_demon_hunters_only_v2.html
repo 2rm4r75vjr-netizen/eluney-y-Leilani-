@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#16051f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Eluney & Leilani • Demon Hunters ✨</title>
+<style>
+:root{
+  --bg:#12041e;--ink:#fffaff;--muted:#eadcf3;--pink:#ff4fc9;--pink2:#ff93df;
+  --purple:#8750ff;--cyan:#76eaff;--gold:#ffe08d;--glass:rgba(255,255,255,.10);
+  --stroke:rgba(255,255,255,.18);--shadow:0 22px 65px rgba(0,0,0,.42)
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#10031a}
+body{color:var(--ink);font-family:ui-rounded,"SF Pro Rounded","Avenir Next",system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:radial-gradient(circle at 10% 5%,rgba(255,79,201,.26),transparent 28%),radial-gradient(circle at 92% 4%,rgba(255,224,141,.18),transparent 25%),linear-gradient(145deg,#10031b,#35104b 55%,#13031c)}
+button,a,input,select{font:inherit}.hidden{display:none!important}
+#app{height:100dvh;min-height:100vh;position:relative;overflow:hidden}
+.sparkles{position:absolute;inset:0;pointer-events:none;opacity:.35;background-image:radial-gradient(#fff 1px,transparent 1.2px);background-size:25px 25px;mask-image:linear-gradient(#000,transparent 93%)}
+.topbar{position:absolute;z-index:30;left:0;right:0;top:0;padding:max(10px,env(safe-area-inset-top)) 12px 8px;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.brand{pointer-events:auto;padding:8px 11px;border-radius:999px;background:rgba(13,3,23,.66);border:1px solid var(--stroke);backdrop-filter:blur(16px);font-weight:1000;font-size:.72rem}
+.lang{pointer-events:auto;display:flex;padding:4px;border-radius:999px;background:rgba(13,3,23,.72);border:1px solid var(--stroke);backdrop-filter:blur(16px)}
+.lang button{border:0;background:transparent;color:#d8c8e5;padding:7px 10px;border-radius:999px;font-size:.72rem;font-weight:1000}.lang button.on{background:linear-gradient(90deg,var(--pink),var(--purple));color:#fff}
+.audioBtn{pointer-events:auto;border:1px solid var(--stroke);background:rgba(13,3,23,.72);color:white;border-radius:999px;padding:8px 10px;font-weight:1000;margin-left:6px}
+.views{height:100%;position:relative}.view{position:absolute;inset:0;padding:max(58px,calc(env(safe-area-inset-top) + 48px)) 14px max(92px,calc(env(safe-area-inset-bottom) + 78px));display:grid;place-items:center;opacity:0;transform:translateX(14px) scale(.985);pointer-events:none;transition:.28s ease}.view.active{opacity:1;transform:none;pointer-events:auto}
+.panel{width:min(100%,760px);height:min(100%,720px);max-height:100%;border:1px solid var(--stroke);background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.055));backdrop-filter:blur(18px);border-radius:28px;box-shadow:var(--shadow);overflow:hidden;position:relative}
+.homePanel{display:grid;grid-template-rows:minmax(180px,45%) auto 1fr;align-items:center;text-align:center}.heroSplit{display:grid;grid-template-columns:1fr 1fr;height:100%;position:relative}.heroHalf{position:relative;overflow:hidden;background:#24103a}.heroHalf img{width:100%;height:100%;object-fit:contain;display:block}.heroHalf.left{background:linear-gradient(160deg,#13051e,#4e1978)}.heroHalf.right{background:linear-gradient(160deg,#552067,#ad6aa9)}.heroHalf::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,3,20,.92),transparent 58%)}.heroLabel{position:absolute;z-index:2;left:10px;right:10px;bottom:10px;text-align:left}.heroLabel strong{display:block;font-size:1rem}.heroLabel span{font-size:.72rem;color:#eedff6}.seam{position:absolute;z-index:3;left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);background:linear-gradient(180deg,transparent,var(--cyan),var(--pink),var(--gold),transparent);box-shadow:0 0 20px var(--pink)}
+.homeCopy{padding:13px 14px 4px}.badge{display:inline-flex;padding:6px 10px;border-radius:999px;border:1px solid var(--stroke);background:rgba(255,255,255,.08);font-weight:1000;font-size:.68rem;color:#fff5c8}.names{margin:8px 0 1px;font-size:clamp(2.4rem,11vw,5.1rem);line-height:.86;letter-spacing:-.065em;font-weight:1000;background:linear-gradient(90deg,#fff,var(--pink2) 35%,var(--gold) 75%,#fff);-webkit-background-clip:text;background-clip:text;color:transparent}.turn3{margin:6px 0 0;font-weight:1000;color:#fff0b7;font-size:1.1rem}.when{margin:5px 0 0;color:var(--cyan);font-weight:900;font-size:.78rem}.quickGrid{align-self:stretch;padding:12px 14px 15px;display:grid;grid-template-columns:1fr 1fr;gap:10px}.quick{min-height:66px;border:1px solid var(--stroke);border-radius:20px;background:rgba(255,255,255,.075);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-weight:1000}.quick b{font-size:1.25rem}.quick span{font-size:.76rem}.quick.game{background:linear-gradient(135deg,rgba(255,79,201,.22),rgba(135,80,255,.23))}
+.sectionPanel{padding:18px;display:flex;flex-direction:column;justify-content:center}.sectionTitle{font-size:clamp(1.7rem,7vw,2.6rem);margin:0 0 5px;letter-spacing:-.04em}.sectionSub{margin:0 0 14px;color:var(--muted);font-size:.85rem;line-height:1.35}.detailList{display:grid;gap:9px}.detail{display:grid;grid-template-columns:42px 1fr;gap:10px;padding:11px;border-radius:17px;background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.11);align-items:center}.ico{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:rgba(255,255,255,.1)}.detail strong{display:block;font-size:.82rem}.detail span{display:block;color:#e4d5ec;font-size:.76rem;line-height:1.3;margin-top:2px}.actionRow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.btn{min-height:48px;border:0;border-radius:999px;padding:11px 14px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:7px;font-weight:1000;font-size:.78rem}.btn.primary{color:#230a2d;background:linear-gradient(90deg,var(--pink2),var(--gold),var(--cyan))}.btn.ghost{color:#fff;background:rgba(255,255,255,.085);border:1px solid var(--stroke)}
+.gifts{display:grid;grid-template-columns:1fr 1fr;gap:10px}.gift{padding:13px;border-radius:20px;background:rgba(255,255,255,.07);border:1px solid var(--stroke)}.gift h3{margin:0 0 8px;font-size:1rem}.gift ul{margin:0;padding-left:18px;color:#ebdff3;font-size:.75rem;line-height:1.5}.giftNote{margin:11px 0 0;text-align:center;color:#ffe8f8;font-size:.78rem}
+.rsvpForm{display:grid;gap:10px}.field label{display:block;font-weight:900;font-size:.76rem;margin:0 0 5px}.field input,.field select{width:100%;border:1px solid var(--stroke);background:rgba(255,255,255,.08);color:#fff;padding:12px 13px;border-radius:15px;outline:none}.field select option{color:#111}.rsvpMsg{font-size:.76rem;color:#d9c9e5;line-height:1.35}
+.gamePanel{padding:16px;display:grid;grid-template-rows:auto 1fr auto;gap:10px}.gameHeader{text-align:center}.gameHeader h2{margin:0;font-size:clamp(1.5rem,6vw,2.25rem)}.gameHeader p{margin:5px 0 0;color:var(--muted);font-size:.79rem}.gameBar{display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:8px}.counter{padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--stroke);font-weight:1000;font-size:.75rem}.arena{position:relative;min-height:0;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:radial-gradient(circle at 50% 50%,rgba(118,234,255,.08),transparent 48%),linear-gradient(180deg,rgba(22,5,40,.92),rgba(57,13,77,.94))}.arena::before{content:"";position:absolute;inset:0;opacity:.22;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:22px 22px}.monster{position:absolute;width:58px;height:58px;border:0;border-radius:50%;display:grid;place-items:center;font-size:2rem;cursor:pointer;background:radial-gradient(circle at 35% 30%,#ff91df,#6e2c8e 68%,#250c36);box-shadow:0 0 0 2px rgba(255,255,255,.13),0 10px 25px rgba(0,0,0,.32);animation:bob 1.3s ease-in-out infinite alternate}.monster:nth-child(odd){animation-duration:1s}.monster.gone{animation:pop .25s ease forwards;pointer-events:none}.missionDone{position:absolute;inset:0;display:grid;place-items:center;padding:20px;background:rgba(15,3,25,.88);backdrop-filter:blur(10px);z-index:10;text-align:center}.missionDone h3{font-size:2rem;margin:0 0 8px}.missionDone p{margin:0 0 14px;color:#f4e7fa}.gameFooter{display:flex;gap:8px}.gameFooter .btn{flex:1}
+@keyframes bob{from{transform:translateY(-4px) rotate(-3deg)}to{transform:translateY(5px) rotate(4deg)}}@keyframes pop{to{transform:scale(1.9) rotate(25deg);opacity:0;filter:blur(5px)}}
+.nav{position:absolute;z-index:25;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));height:66px;border-radius:24px;background:rgba(13,3,23,.83);border:1px solid var(--stroke);backdrop-filter:blur(20px);box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(5,1fr);padding:7px;gap:4px}.nav button{border:0;background:transparent;color:#cbb9d9;border-radius:16px;font-size:.62rem;font-weight:950;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px}.nav button b{font-size:1rem}.nav button.on{color:#fff;background:linear-gradient(180deg,rgba(255,79,201,.22),rgba(135,80,255,.18));box-shadow:inset 0 0 0 1px rgba(255,255,255,.11)}
+.toast{position:absolute;z-index:60;left:50%;top:max(56px,calc(env(safe-area-inset-top) + 46px));transform:translate(-50%,-12px);opacity:0;padding:9px 13px;border-radius:999px;background:#21102e;border:1px solid var(--stroke);font-size:.76rem;font-weight:900;transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
+.musicMini{position:absolute;z-index:24;left:12px;top:max(12px,env(safe-area-inset-top));transform:translateY(38px);padding:6px 9px;border-radius:999px;background:rgba(13,3,23,.65);border:1px solid var(--stroke);font-size:.64rem;color:#d8c7e4;pointer-events:none;max-width:54vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.confetti{position:absolute;z-index:15;pointer-events:none;width:9px;height:14px;border-radius:2px;background:var(--pink);animation:fall 1.4s linear forwards}@keyframes fall{from{transform:translateY(-20px) rotate(0);opacity:1}to{transform:translateY(360px) rotate(480deg);opacity:0}}
+@media(max-width:420px){.panel{border-radius:24px}.homePanel{grid-template-rows:minmax(165px,42%) auto 1fr}.quickGrid{gap:8px;padding:9px 11px 12px}.quick{min-height:58px}.quick b{font-size:1.12rem}.quick span{font-size:.69rem}.sectionPanel{padding:15px}.detail{padding:9px}.actionRow{margin-top:9px}.gifts{gap:8px}.gift{padding:11px}.gift ul{font-size:.7rem}.monster{width:52px;height:52px;font-size:1.8rem}.nav{height:62px}.view{padding-bottom:max(86px,calc(env(safe-area-inset-bottom) + 72px))}}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="sparkles"></div>
+  <div class="topbar">
+    <div><span class="brand">Eluney & Leilani ✨</span><button class="audioBtn" id="audioBtn" aria-label="Música">🔊</button></div>
+    <div class="lang"><button id="es" class="on">ES</button><button id="en">EN</button></div>
+  </div>
+  <div id="musicMini" class="musicMini">🎵 Golden • HUNTR/X • EN/ES</div>
+
+  <div class="views">
+    <section class="view active" data-view="home">
+      <div class="panel homePanel">
+        <div class="heroSplit">
+          <div class="heroHalf left"><img src="https://occ-0-3011-116.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABUkdNWTnIZAk6sL7Qu9yj_WcWTer6m7ocUpllNk6O0hllCT6t2Hx0xySVgESEHpHGp9oYWshlYd0I_sMErwsSzU-9dIUTTMRQK1Z.jpg?r=983" alt="Demon Hunters"><div class="heroLabel"><strong>Eluney</strong><span data-k="eluneyTheme">Demon Hunters • Golden era</span></div></div>
+          <div class="heroHalf right"><img src="https://occ-0-3011-116.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABUkdNWTnIZAk6sL7Qu9yj_WcWTer6m7ocUpllNk6O0hllCT6t2Hx0xySVgESEHpHGp9oYWshlYd0I_sMErwsSzU-9dIUTTMRQK1Z.jpg?r=983" alt="Demon Hunters"><div class="heroLabel"><strong>Leilani</strong><span data-k="leilaniTheme">Demon Hunters • Golden era</span></div></div>
+          <div class="seam"></div>
+        </div>
+        <div class="homeCopy"><div class="badge" data-k="badge">⚔️ HUNTR/X • Golden ⚔️</div><div class="names">Eluney & Leilani</div><div class="turn3" data-k="turn3">¡Cumplen 3 años! • Demon Hunters Party 🎂✨</div><div class="when" data-k="when">Sábado 14 de noviembre • desde las 5:00 p. m.</div></div>
+        <div class="quickGrid">
+          <button class="quick" data-go="details"><b>📍</b><span data-k="qDetails">Detalles</span></button>
+          <button class="quick" data-go="gifts"><b>🎁</b><span data-k="qGifts">Regalos</span></button>
+          <button class="quick" data-go="rsvp"><b>💌</b><span data-k="qRsvp">Confirmar</span></button>
+          <button class="quick game" data-go="game"><b>👾</b><span data-k="qGame">Jugar</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" data-view="details">
+      <div class="panel sectionPanel">
+        <h2 class="sectionTitle" data-k="detailsTitle">Detalles de la fiesta ✨</h2>
+        <p class="sectionSub" data-k="detailsSub">Todo lo que necesitas para acompañarnos.</p>
+        <div class="detailList">
+          <div class="detail"><div class="ico">🎂</div><div><strong data-k="celebrate">Celebramos</strong><span data-k="celebrateVal">Los 3 años de Eluney y Leilani con tema de Demon Hunters.</span></div></div>
+          <div class="detail"><div class="ico">📅</div><div><strong data-k="dateLabel">Fecha</strong><span data-k="dateVal">Sábado 14 de noviembre de 2026.</span></div></div>
+          <div class="detail"><div class="ico">🕔</div><div><strong data-k="timeLabel">Hora</strong><span data-k="timeVal">Desde las 5:00 p. m.</span></div></div>
+          <div class="detail"><div class="ico">📍</div><div><strong data-k="placeLabel">Lugar</strong><span>727 W 8th Street, San Bernardino, CA 92410</span></div></div>
+        </div>
+        <div class="actionRow"><a class="btn primary" target="_blank" href="https://maps.apple.com/?q=727+W+8th+Street,+San+Bernardino,+CA+92410" data-k="map">📍 Ver ubicación</a><a class="btn ghost" id="calendar" href="#" data-k="calendar">📆 Calendario</a></div>
+      </div>
+    </section>
+
+    <section class="view" data-view="gifts">
+      <div class="panel sectionPanel">
+        <h2 class="sectionTitle" data-k="giftsTitle">Ideas de regalos 🎁</h2>
+        <p class="sectionSub" data-k="giftsSub">Si te gustaría llevarles un detalle, aquí tienes algunas ideas. Es completamente opcional. 💜</p>
+        <div class="gifts">
+          <div class="gift"><h3>⚔️ Eluney</h3><ul><li data-k="e1">KPop Demon Hunters • Golden</li><li data-k="e2">Rumi, Mira, Zoey o accesorios Golden</li><li data-k="e3">Muñecas, peluches, figuras o micrófonos de juguete</li><li data-k="e4">Arte, stickers y juegos creativos Demon Hunters para 3+</li></ul></div>
+          <div class="gift"><h3>⚔️ Leilani</h3><ul><li data-k="l1">Demon Hunters</li><li data-k="l2">Outfits, accesorios o juguetes de HUNTR/X</li><li data-k="l3">Peluches, figuras o sets musicales</li><li data-k="l4">Juegos creativos Demon Hunters para 3+</li></ul></div>
+        </div>
+        <p class="giftNote" data-k="giftNote">💝 Lo más importante es celebrar contigo.</p>
+      </div>
+    </section>
+
+    <section class="view" data-view="rsvp">
+      <div class="panel sectionPanel">
+        <h2 class="sectionTitle" data-k="rsvpTitle">Confirmar asistencia 💖</h2>
+        <p class="sectionSub" data-k="rsvpSub">Dinos quién viene y te preparamos un mensaje para WhatsApp.</p>
+        <div class="rsvpForm">
+          <div class="field"><label data-k="nameLabel">Tu nombre</label><input id="name" placeholder="Nombre"></div>
+          <div class="field"><label data-k="guestsLabel">¿Cuántas personas asistirán?</label><select id="guests"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
+          <div class="actionRow"><button class="btn primary" id="wa" data-k="wa">Abrir WhatsApp</button><button class="btn ghost" id="copy" data-k="copy">Copiar mensaje</button></div>
+          <div class="rsvpMsg" data-k="rsvpHint">También puedes regresar al inicio usando el botón de abajo.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" data-view="game">
+      <div class="panel gamePanel">
+        <div class="gameHeader"><h2 data-k="gameTitle">¡Ayúdanos a acabar con los monstruos! 👾</h2><p data-k="gameSub">Toca todos los monstruos antes de que invadan la fiesta.</p><div class="gameBar"><div class="counter" id="counter">0 / 10</div><button class="btn ghost" id="restart" data-k="restart">↻ Reiniciar</button></div></div>
+        <div class="arena" id="arena"><div class="missionDone hidden" id="done"><div><h3 data-k="doneTitle">✨ ¡Misión cumplida! ✨</h3><p data-k="doneText">¡Eluney y Leilani están listas para la fiesta! 🎉</p><button class="btn primary" id="again" data-k="again">Jugar otra vez</button></div></div></div>
+        <div class="gameFooter"><button class="btn ghost" data-go="home" data-k="backHome">🏠 Volver al inicio</button></div>
+      </div>
+    </section>
+  </div>
+
+  <nav class="nav">
+    <button class="on" data-go="home"><b>🏠</b><span data-k="navHome">Inicio</span></button>
+    <button data-go="details"><b>📍</b><span data-k="navDetails">Detalles</span></button>
+    <button data-go="gifts"><b>🎁</b><span data-k="navGifts">Regalos</span></button>
+    <button data-go="rsvp"><b>💌</b><span data-k="navRsvp">RSVP</span></button>
+    <button data-go="game"><b>👾</b><span data-k="navGame">Juego</span></button>
+  </nav>
+  <audio id="audio" preload="none"></audio>
+  <div id="toast" class="toast"></div>
+</div>
+<script>
+const T={
+ es:{eluneyTheme:"Demon Hunters • Golden era",leilaniTheme:"Demon Hunters • Golden era",badge:"⚔️ HUNTR/X • Golden ⚔️",turn3:"¡Cumplen 3 años! • Demon Hunters Party 🎂✨",when:"Sábado 14 de noviembre • desde las 5:00 p. m.",qDetails:"Detalles",qGifts:"Regalos",qRsvp:"Confirmar",qGame:"Jugar",detailsTitle:"Detalles de la fiesta ✨",detailsSub:"Todo lo que necesitas para acompañarnos.",celebrate:"Celebramos",celebrateVal:"Los 3 años de Eluney y Leilani con tema de Demon Hunters.",dateLabel:"Fecha",dateVal:"Sábado 14 de noviembre de 2026.",timeLabel:"Hora",timeVal:"Desde las 5:00 p. m.",placeLabel:"Lugar",map:"📍 Ver ubicación",calendar:"📆 Calendario",giftsTitle:"Ideas de regalos 🎁",giftsSub:"Si te gustaría llevarles un detalle, aquí tienes algunas ideas. Es completamente opcional. 💜",e1:"KPop Demon Hunters • Golden",e2:"Rumi, Mira, Zoey o accesorios Golden",e3:"Muñecas, peluches, figuras o micrófonos de juguete",e4:"Arte, stickers y juegos creativos Demon Hunters para 3+",l1:"Demon Hunters",l2:"Outfits, accesorios o juguetes de HUNTR/X",l3:"Peluches, figuras o sets musicales",l4:"Juegos creativos Demon Hunters para 3+",giftNote:"💝 Lo más importante es celebrar contigo.",rsvpTitle:"Confirmar asistencia 💖",rsvpSub:"Dinos quién viene y te preparamos un mensaje para WhatsApp.",nameLabel:"Tu nombre",guestsLabel:"¿Cuántas personas asistirán?",wa:"Abrir WhatsApp",copy:"Copiar mensaje",rsvpHint:"También puedes regresar al inicio usando el botón de abajo.",gameTitle:"¡Ayúdanos a acabar con los monstruos! 👾",gameSub:"Toca todos los monstruos antes de que invadan la fiesta.",restart:"↻ Reiniciar",doneTitle:"✨ ¡Misión cumplida! ✨",doneText:"¡Eluney y Leilani están listas para la fiesta! 🎉",again:"Jugar otra vez",backHome:"🏠 Volver al inicio",navHome:"Inicio",navDetails:"Detalles",navGifts:"Regalos",navRsvp:"RSVP",navGame:"Juego"},
+ en:{eluneyTheme:"Demon Hunters • Golden era",leilaniTheme:"Demon Hunters • Golden era",badge:"⚔️ HUNTR/X • Golden ⚔️",turn3:"Turning 3! • Demon Hunters Party 🎂✨",when:"Saturday, November 14 • from 5:00 p.m.",qDetails:"Details",qGifts:"Gifts",qRsvp:"RSVP",qGame:"Play",detailsTitle:"Party details ✨",detailsSub:"Everything you need to celebrate with us.",celebrate:"Celebrating",celebrateVal:"Eluney and Leilani are turning 3 with a Demon Hunters theme.",dateLabel:"Date",dateVal:"Saturday, November 14, 2026.",timeLabel:"Time",timeVal:"From 5:00 p.m.",placeLabel:"Location",map:"📍 View location",calendar:"📆 Calendar",giftsTitle:"Gift ideas 🎁",giftsSub:"If you'd like to bring them a little gift, here are a few ideas. Gifts are completely optional. 💜",e1:"KPop Demon Hunters • Golden",e2:"Rumi, Mira, Zoey or Golden accessories",e3:"Dolls, plush toys, figures or toy microphones",e4:"Demon Hunters art, stickers and creative toys for ages 3+",l1:"Demon Hunters",l2:"HUNTR/X outfits, accessories or toys",l3:"Plush toys, figures or music play sets",l4:"Demon Hunters creative toys for ages 3+",giftNote:"💝 The most important gift is celebrating together.",rsvpTitle:"RSVP 💖",rsvpSub:"Tell us who's coming and we'll prepare a WhatsApp message.",nameLabel:"Your name",guestsLabel:"How many people are coming?",wa:"Open WhatsApp",copy:"Copy message",rsvpHint:"You can return home using the button below.",gameTitle:"Help us defeat the monsters! 👾",gameSub:"Tap every monster before they invade the party.",restart:"↻ Restart",doneTitle:"✨ Mission complete! ✨",doneText:"Eluney and Leilani are ready for the party! 🎉",again:"Play again",backHome:"🏠 Back home",navHome:"Home",navDetails:"Details",navGifts:"Gifts",navRsvp:"RSVP",navGame:"Game"}
+};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];let lang=localStorage.getItem("inviteLang")||"es";
+function setLang(v){lang=v;localStorage.setItem("inviteLang",v);document.documentElement.lang=v;$("#es").classList.toggle("on",v==="es");$("#en").classList.toggle("on",v==="en");$$('[data-k]').forEach(el=>{const k=el.dataset.k;if(T[v][k])el.textContent=T[v][k]})}
+$("#es").onclick=()=>setLang("es");$("#en").onclick=()=>setLang("en");setLang(lang);
+function showView(name){$$('.view').forEach(v=>v.classList.toggle('active',v.dataset.view===name));$$('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.go===name));if(name==='game'&&!gameStarted)startGame();}
+$$('[data-go]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.go)));
+
+const audio=$("#audio"),audioBtn=$("#audioBtn"),musicMini=$("#musicMini");let audioEnabled=true,trackIndex=0;
+const tracks=[
+ {title:"Golden (English)",artist:"HUNTR/X",lookup:"1824324836",preview:null},
+ {title:"Golden (Español)",artist:"HUNTR/X",lookup:"1824324836",preview:null},
+ {title:"Takedown (English)",artist:"HUNTR/X",lookup:"1824324836",preview:null},
+ {title:"Takedown (Español)",artist:"HUNTR/X",lookup:"1824324836",preview:null}
+];
+function loadTracks(){tracks.forEach((t,i)=>{const cb='itunesCb'+i;window[cb]=d=>{const r=d&&d.results&&d.results[0];if(r&&r.previewUrl)t.preview=r.previewUrl;if(i===0)tryAutoPlay()};const s=document.createElement('script');s.src='https://itunes.apple.com/lookup?id='+t.lookup+'&callback='+cb;document.head.appendChild(s)})}
+function updateMusic(){const t=tracks[trackIndex];musicMini.textContent='🎵 '+t.title+' • '+t.artist;audioBtn.textContent=audioEnabled&&!audio.paused?'🔊':'🔇'}
+async function playTrack(i){trackIndex=(i+tracks.length)%tracks.length;const t=tracks[trackIndex];if(!t.preview)return false;audio.src=t.preview;try{await audio.play();audioEnabled=true;updateMusic();return true}catch(e){return false}}
+async function tryAutoPlay(){if(!audioEnabled)return;const ok=await playTrack(trackIndex);if(!ok){document.addEventListener('pointerdown',firstTouch,{once:true,capture:true})}}
+async function firstTouch(){if(audioEnabled&&audio.paused)await playTrack(trackIndex)}
+audio.onended=()=>playTrack(trackIndex+1);audio.onplay=updateMusic;audio.onpause=updateMusic;
+audioBtn.onclick=async()=>{if(!audioEnabled){audioEnabled=true;await playTrack(trackIndex)}else if(audio.paused){await audio.play()}else{audio.pause();audioEnabled=false}updateMusic()};
+loadTracks();
+
+function rsvpMessage(){const n=$("#name").value.trim()||(lang==='es'?'Invitado':'Guest'),g=$("#guests").value;return lang==='es'?'Hola, soy '+n+'. Confirmo asistencia al cumpleaños de Eluney y Leilani el 14 de noviembre. Asistiremos '+g+' persona(s). 🎉':'Hi, this is '+n+". I'm confirming for Eluney & Leilani's birthday on November 14. "+g+' person(s) will attend. 🎉'}
+$("#wa").onclick=()=>location.href='https://wa.me/?text='+encodeURIComponent(rsvpMessage());
+$("#copy").onclick=async()=>{try{await navigator.clipboard.writeText(rsvpMessage());toast(lang==='es'?'Mensaje copiado ✨':'Message copied ✨')}catch(e){prompt('',rsvpMessage())}};
+$("#calendar").onclick=e=>{e.preventDefault();const title=encodeURIComponent(lang==='es'?'Cumpleaños de Eluney y Leilani 🎂':'Eluney & Leilani Birthday 🎂'),loc=encodeURIComponent('727 W 8th Street, San Bernardino, CA 92410');window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text='+title+'&dates=20261115T010000Z/20261115T050000Z&location='+loc,'_blank')};
+function toast(t){const x=$("#toast");x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),1500)}
+
+const arena=$("#arena"),done=$("#done"),counter=$("#counter");let hits=0,total=10,gameStarted=false;
+const monsters=['👾','👹','😈','👻'];
+function startGame(){gameStarted=true;hits=0;counter.textContent='0 / '+total;done.classList.add('hidden');arena.querySelectorAll('.monster,.confetti').forEach(x=>x.remove());requestAnimationFrame(()=>{const w=arena.clientWidth,h=arena.clientHeight;for(let i=0;i<total;i++){const b=document.createElement('button');b.className='monster';b.textContent=monsters[i%monsters.length];const size=w<360?52:58;const left=Math.max(4,Math.random()*(w-size-8));const top=Math.max(4,Math.random()*(h-size-8));b.style.left=left+'px';b.style.top=top+'px';b.style.animationDelay=(Math.random()*.7)+'s';b.onclick=()=>hitMonster(b);arena.appendChild(b)}})}
+function hitMonster(b){if(b.classList.contains('gone'))return;b.classList.add('gone');hits++;counter.textContent=hits+' / '+total;if(hits>=total)setTimeout(winGame,260)}
+function winGame(){done.classList.remove('hidden');for(let i=0;i<26;i++){const c=document.createElement('i');c.className='confetti';c.style.left=(Math.random()*100)+'%';c.style.top='-15px';c.style.background=['#ff4fc9','#ffe08d','#76eaff','#8750ff'][i%4];c.style.animationDelay=(Math.random()*.35)+'s';arena.appendChild(c)}}
+$("#restart").onclick=startGame;$("#again").onclick=startGame;
+
+// Prevent page scrolling/overscroll; navigation happens only through buttons.
+document.addEventListener('touchmove',e=>e.preventDefault(),{passive:false});
+</script>
+</body>
+</html>
