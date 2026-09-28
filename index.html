@@ -1,231 +1,171 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#2a0f5e" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="description" content="Invitación al cumpleaños #3 de Eluney y Leilani — 14 de noviembre de 2026." />
-  <title>Eluney & Leilani • 3 años ✨</title>
-  <style>
-    :root{
-      --ink:#fffafc; --muted:#eadcf6; --deep:#100521; --violet:#7138ff; --purple:#9b52ff;
-      --pink:#ff41c7; --hot:#ff6cdb; --cyan:#5de5ff; --gold:#ffd978; --cream:#fff5df;
-      --glass:rgba(255,255,255,.10); --stroke:rgba(255,255,255,.19); --shadow:0 22px 70px rgba(0,0,0,.35);
-    }
-    *{box-sizing:border-box} html{scroll-behavior:smooth;background:#100521}
-    body{margin:0;color:var(--ink);font-family:ui-rounded,"SF Pro Rounded","Avenir Next",system-ui,-apple-system,"Segoe UI",sans-serif;background:
-      radial-gradient(circle at 10% 12%,rgba(255,65,199,.24),transparent 26%),radial-gradient(circle at 88% 10%,rgba(255,217,120,.16),transparent 25%),linear-gradient(145deg,#120527,#250b52 52%,#17032c);overflow-x:hidden}
-    button,a,input,select{font:inherit}.hidden{display:none!important}
-    .stars{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.36;background-image:radial-gradient(rgba(255,255,255,.9) .8px,transparent .9px);background-size:27px 27px;mask-image:linear-gradient(#000,transparent 90%)}
-
-    /* language */
-    .lang-switch{position:fixed;z-index:1200;top:max(12px,env(safe-area-inset-top));right:12px;display:flex;padding:4px;border-radius:999px;background:rgba(20,7,43,.75);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(16px)}
-    .lang-switch button{border:0;background:transparent;color:#d9c9ef;padding:8px 11px;border-radius:999px;font-weight:950;font-size:.75rem;cursor:pointer}
-    .lang-switch button.active{background:linear-gradient(90deg,var(--pink),var(--purple));color:#fff;box-shadow:0 6px 18px rgba(255,65,199,.28)}
-
-    /* intro */
-    #intro{position:fixed;inset:0;z-index:1100;background:#090211;display:grid;place-items:center;overflow:hidden;transition:.7s ease;padding:max(18px,env(safe-area-inset-top)) 18px max(18px,env(safe-area-inset-bottom))}
-    #intro.out{opacity:0;visibility:hidden;transform:scale(1.03)}
-    #intro video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.08;filter:saturate(1.15) contrast(1.05)}
-    .intro-worlds{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
-    .intro-half{position:relative;background-size:cover;background-position:center;filter:saturate(1.18) contrast(1.04)}
-    .intro-half::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,2,18,.05),rgba(8,2,18,.2) 45%,rgba(8,2,18,.92) 90%)}
-    .intro-half.demon{background-image:url('https://static.kino.de/d4/f4/53/b51f9828369e225efb65285f44_cmUgMTIwMCAxMjAwIGMgbQNkNGJmMjYyZTY4NA%3D%3D.jpeg');background-position:42% 22%;box-shadow:inset -18px 0 45px rgba(87,44,255,.28)}
-    .intro-half.sofia{background-image:url('https://is3-ssl.mzstatic.com/image/thumb/Video113/v4/cb/af/22/cbaf22ff-ba22-1a9f-27cf-ec87b7a96dee/pr_source.lsr/1200x675.jpg');background-position:54% 30%;box-shadow:inset 18px 0 45px rgba(255,147,218,.18)}
-    .intro-seam{position:absolute;z-index:1;left:50%;top:0;bottom:0;width:3px;transform:translateX(-50%);background:linear-gradient(180deg,transparent,#8cf2ff 26%,#ff77db 52%,#ffd978 78%,transparent);box-shadow:0 0 26px #d85cff}
-    #intro::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,transparent 0 24%,rgba(7,2,15,.08) 50%,rgba(7,2,15,.42) 78%),linear-gradient(to bottom,rgba(7,2,15,.06),rgba(7,2,15,.1) 38%,rgba(7,2,15,.88) 82%)}
-    .intro-card{position:relative;z-index:2;text-align:center;width:min(94vw,560px);margin-top:auto;margin-bottom:5.5vh;padding:26px 18px 20px;border-radius:34px;background:linear-gradient(180deg,rgba(16,5,33,.10),rgba(16,5,33,.58));backdrop-filter:blur(7px);box-shadow:0 20px 70px rgba(0,0,0,.24)}
-    .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:.73rem;color:#8cf2ff;font-weight:1000}
-    .intro-title{font-size:clamp(2.7rem,12vw,5.6rem);line-height:.85;margin:12px 0 12px;letter-spacing:-.06em;font-weight:1000;background:linear-gradient(100deg,#fff,#ff8fe5 38%,#ffd979 72%,#fff);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 28px rgba(255,65,199,.15)}
-    .intro-copy{line-height:1.5;color:#fff3ff;font-size:1.05rem;margin:0 auto 18px;max-width:430px}
-    .intro-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.pill{appearance:none;border:0;border-radius:999px;min-height:52px;padding:14px 20px;font-weight:1000;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}
-    .pill.primary{color:#1d0a2f;background:linear-gradient(90deg,#ff8fe5,#ffe39a,#85eeff);box-shadow:0 12px 34px rgba(255,65,199,.28)}
-    .pill.ghost{color:#fff;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(10px)}
-    .tiny{font-size:.75rem;color:#eadcf6;margin-top:12px}.music-hint{display:inline-flex;align-items:center;gap:7px;margin-top:10px;padding:7px 11px;border-radius:999px;background:rgba(12,5,28,.5);border:1px solid rgba(255,255,255,.18);font-size:.72rem;color:#fff0fb;font-weight:900}
-
-    /* hero */
-    main{opacity:0;transform:translateY(10px);transition:opacity .7s ease .15s,transform .7s ease .15s}body.open main{opacity:1;transform:none}
-    .hero{min-height:100svh;padding:86px 16px 44px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 18% 18%,rgba(51,69,255,.24),transparent 34%),radial-gradient(circle at 84% 20%,rgba(255,178,222,.20),transparent 34%),linear-gradient(180deg,#1b0638,#4f1c68 62%,#170526)}
-    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(31,2,65,.24),rgba(31,2,65,.08) 49%,rgba(255,220,241,.10) 51%,rgba(255,220,241,.16));pointer-events:none}
-    .hero-inner{width:min(100%,820px);position:relative;z-index:2;text-align:center}
-    .portrait-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:720px;margin:0 auto 22px;border-radius:34px;overflow:hidden;border:1px solid rgba(255,255,255,.28);box-shadow:0 28px 80px rgba(0,0,0,.38),0 0 54px rgba(255,75,210,.14)}
-    .portrait{height:285px;border-radius:0;overflow:hidden;position:relative;border:0;box-shadow:none;background:#251047}
-    .portrait img{width:100%;height:100%;object-fit:cover;display:block}.portrait.left img{object-position:center 28%}.portrait.right img{object-position:center 35%}
-    .portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,2,16,.74),transparent 55%)}
-    .portrait-label{position:absolute;z-index:2;bottom:12px;left:14px;right:14px;text-align:left}.portrait-label strong{font-size:1.15rem}.portrait-label span{display:block;font-size:.8rem;color:#f3ddff;margin-top:2px}
-    .badge{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:999px;background:rgba(255,255,255,.09);border:1px solid var(--stroke);backdrop-filter:blur(12px);font-size:.78rem;font-weight:950}
-    h1{font-size:clamp(3.4rem,15vw,7.4rem);line-height:.82;margin:18px 0 14px;letter-spacing:-.07em;font-weight:1000;background:linear-gradient(90deg,#ff60d6,#fff 48%,#ffd978);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .turn3{font-size:clamp(1.5rem,6vw,2.25rem);font-weight:1000;color:#fff1bd;margin:0 0 10px}.date{font-weight:950;color:#88efff;font-size:clamp(1.08rem,4vw,1.45rem);margin:0}.subtitle{color:#e1d2ee;line-height:1.6;max-width:650px;margin:12px auto 0}
-    .hero-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
-
-    /* sections */
-    .section{padding:24px 16px 64px}.wrap{width:min(100%,800px);margin:auto}.glass{background:linear-gradient(180deg,rgba(255,255,255,.105),rgba(255,255,255,.055));border:1px solid var(--stroke);border-radius:30px;padding:24px;box-shadow:var(--shadow);backdrop-filter:blur(18px)}
-    .section-title{font-size:clamp(1.8rem,7vw,3rem);letter-spacing:-.04em;margin:0 0 8px}.section-copy{color:var(--muted);line-height:1.6;margin:0}.divider{height:1px;background:rgba(255,255,255,.12);margin:22px 0}
-    .details{display:grid;gap:12px;margin-top:20px}.detail{display:grid;grid-template-columns:46px 1fr;gap:12px;padding:15px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11)}.ico{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;background:rgba(255,255,255,.1);font-size:1.2rem}.detail strong{display:block;margin-bottom:4px}.detail span{color:#e0d3ec;line-height:1.45}
-    .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:20px}.timebox{padding:16px 5px;text-align:center;border-radius:18px;background:rgba(6,2,18,.34);border:1px solid rgba(255,255,255,.12)}.num{font-size:clamp(1.5rem,7vw,2.35rem);font-weight:1000;display:block}.lbl{font-size:.68rem;color:#cdbedf;text-transform:uppercase;letter-spacing:.09em;font-weight:900;margin-top:6px;display:block}
-    .actions-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.action{border:0;border-radius:19px;padding:15px 12px;color:#fff;text-decoration:none;font-weight:1000;text-align:center;cursor:pointer;background:linear-gradient(135deg,#ff42c8,#823dff);box-shadow:0 12px 26px rgba(95,35,196,.25)}.action.alt{background:linear-gradient(135deg,#6f43ff,#b24fff)}.action.full{grid-column:1/-1;background:linear-gradient(135deg,#a84bff,#ff49c8)}
-
-    /* gifts */
-    .gift-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.gift-card{padding:18px;border-radius:22px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}.gift-card h3{margin:0 0 10px;font-size:1.25rem}.gift-card ul{padding-left:18px;margin:0;color:#eadff3;line-height:1.65}.gift-card.eluney{box-shadow:inset 0 0 0 1px rgba(92,226,255,.06);background:linear-gradient(145deg,rgba(57,12,110,.52),rgba(255,65,199,.08))}.gift-card.leilani{background:linear-gradient(145deg,rgba(255,209,238,.12),rgba(255,217,120,.06))}.gift-note{margin-top:14px;font-size:.82rem;color:#cdbfe0;text-align:center}
-
-    /* modal */
-    .modal{position:fixed;inset:0;z-index:1300;background:rgba(7,2,14,.78);display:grid;place-items:center;padding:18px;backdrop-filter:blur(10px)}.modal-card{width:min(100%,500px);background:linear-gradient(160deg,#2a0a53,#150728);border:1px solid rgba(255,255,255,.18);border-radius:28px;padding:22px;box-shadow:0 26px 80px rgba(0,0,0,.55)}.modal-head{display:flex;justify-content:space-between;gap:12px;align-items:center}.modal h3{font-size:1.55rem;margin:0}.close{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;font-size:1.15rem;cursor:pointer}.field{margin-top:14px}.field label{display:block;font-size:.8rem;color:#d8c7e8;margin-bottom:6px;font-weight:900}.field input,.field select{width:100%;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);color:#fff;border-radius:15px;padding:13px;outline:none}.field select option{color:#111}.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.modal-actions .pill{flex:1}
-    .footer{text-align:center;color:#bdaed0;padding:8px 16px 84px;font-size:.8rem}
-
-    .music-dock{position:fixed;z-index:1050;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:8px;max-width:92vw;padding:8px 10px 8px 13px;border-radius:999px;background:rgba(18,5,38,.86);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(18px);box-shadow:0 12px 36px rgba(0,0,0,.35);transition:.25s ease}
-    .music-dock.hidden{display:none}.music-dock .track{min-width:0;max-width:48vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.74rem;font-weight:900;color:#fff}.music-dock .sub{font-size:.62rem;color:#d4c4e6;display:block}.music-dock button{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.09);color:#fff;font-size:.92rem;cursor:pointer}.music-dock .music-icon{font-size:1rem}
-.spark{position:fixed;pointer-events:none;z-index:2000;animation:spark .85s ease forwards}.toast{position:fixed;left:50%;bottom:max(22px,env(safe-area-inset-bottom));transform:translateX(-50%) translateY(15px);z-index:1500;background:#fff;color:#2b0b44;padding:11px 15px;border-radius:999px;font-weight:900;opacity:0;transition:.25s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-    @keyframes spark{from{opacity:1;transform:translate(0,0) scale(.5) rotate(0)}to{opacity:0;transform:translate(var(--x),var(--y)) scale(1.3) rotate(180deg)}}
-    @media(max-width:620px){.portrait{height:180px}.glass{padding:20px}.gift-grid{grid-template-columns:1fr}.actions-grid{grid-template-columns:1fr}.action.full{grid-column:auto}}
-    @media(max-width:390px){.portrait{height:160px}.countdown{gap:5px}.timebox{padding:13px 2px}.lang-switch button{padding:7px 9px}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#16051f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Eluney & Leilani • 3 años ✨</title>
+<style>
+:root{
+  --bg:#12041e;--ink:#fffaff;--muted:#eadcf3;--pink:#ff4fc9;--pink2:#ff93df;
+  --purple:#8750ff;--cyan:#76eaff;--gold:#ffe08d;--glass:rgba(255,255,255,.10);
+  --stroke:rgba(255,255,255,.18);--shadow:0 22px 65px rgba(0,0,0,.42)
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#10031a}
+body{color:var(--ink);font-family:ui-rounded,"SF Pro Rounded","Avenir Next",system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:radial-gradient(circle at 10% 5%,rgba(255,79,201,.26),transparent 28%),radial-gradient(circle at 92% 4%,rgba(255,224,141,.18),transparent 25%),linear-gradient(145deg,#10031b,#35104b 55%,#13031c)}
+button,a,input,select{font:inherit}.hidden{display:none!important}
+#app{height:100dvh;min-height:100vh;position:relative;overflow:hidden}
+.sparkles{position:absolute;inset:0;pointer-events:none;opacity:.35;background-image:radial-gradient(#fff 1px,transparent 1.2px);background-size:25px 25px;mask-image:linear-gradient(#000,transparent 93%)}
+.topbar{position:absolute;z-index:30;left:0;right:0;top:0;padding:max(10px,env(safe-area-inset-top)) 12px 8px;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.brand{pointer-events:auto;padding:8px 11px;border-radius:999px;background:rgba(13,3,23,.66);border:1px solid var(--stroke);backdrop-filter:blur(16px);font-weight:1000;font-size:.72rem}
+.lang{pointer-events:auto;display:flex;padding:4px;border-radius:999px;background:rgba(13,3,23,.72);border:1px solid var(--stroke);backdrop-filter:blur(16px)}
+.lang button{border:0;background:transparent;color:#d8c8e5;padding:7px 10px;border-radius:999px;font-size:.72rem;font-weight:1000}.lang button.on{background:linear-gradient(90deg,var(--pink),var(--purple));color:#fff}
+.audioBtn{pointer-events:auto;border:1px solid var(--stroke);background:rgba(13,3,23,.72);color:white;border-radius:999px;padding:8px 10px;font-weight:1000;margin-left:6px}
+.views{height:100%;position:relative}.view{position:absolute;inset:0;padding:max(58px,calc(env(safe-area-inset-top) + 48px)) 14px max(92px,calc(env(safe-area-inset-bottom) + 78px));display:grid;place-items:center;opacity:0;transform:translateX(14px) scale(.985);pointer-events:none;transition:.28s ease}.view.active{opacity:1;transform:none;pointer-events:auto}
+.panel{width:min(100%,760px);height:min(100%,720px);max-height:100%;border:1px solid var(--stroke);background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.055));backdrop-filter:blur(18px);border-radius:28px;box-shadow:var(--shadow);overflow:hidden;position:relative}
+.homePanel{display:grid;grid-template-rows:minmax(180px,45%) auto 1fr;align-items:center;text-align:center}.heroSplit{display:grid;grid-template-columns:1fr 1fr;height:100%;position:relative}.heroHalf{position:relative;overflow:hidden;background:#24103a}.heroHalf img{width:100%;height:100%;object-fit:contain;display:block}.heroHalf.left{background:linear-gradient(160deg,#13051e,#4e1978)}.heroHalf.right{background:linear-gradient(160deg,#552067,#ad6aa9)}.heroHalf::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,3,20,.92),transparent 58%)}.heroLabel{position:absolute;z-index:2;left:10px;right:10px;bottom:10px;text-align:left}.heroLabel strong{display:block;font-size:1rem}.heroLabel span{font-size:.72rem;color:#eedff6}.seam{position:absolute;z-index:3;left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);background:linear-gradient(180deg,transparent,var(--cyan),var(--pink),var(--gold),transparent);box-shadow:0 0 20px var(--pink)}
+.homeCopy{padding:13px 14px 4px}.badge{display:inline-flex;padding:6px 10px;border-radius:999px;border:1px solid var(--stroke);background:rgba(255,255,255,.08);font-weight:1000;font-size:.68rem;color:#fff5c8}.names{margin:8px 0 1px;font-size:clamp(2.4rem,11vw,5.1rem);line-height:.86;letter-spacing:-.065em;font-weight:1000;background:linear-gradient(90deg,#fff,var(--pink2) 35%,var(--gold) 75%,#fff);-webkit-background-clip:text;background-clip:text;color:transparent}.turn3{margin:6px 0 0;font-weight:1000;color:#fff0b7;font-size:1.1rem}.when{margin:5px 0 0;color:var(--cyan);font-weight:900;font-size:.78rem}.quickGrid{align-self:stretch;padding:12px 14px 15px;display:grid;grid-template-columns:1fr 1fr;gap:10px}.quick{min-height:66px;border:1px solid var(--stroke);border-radius:20px;background:rgba(255,255,255,.075);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-weight:1000}.quick b{font-size:1.25rem}.quick span{font-size:.76rem}.quick.game{background:linear-gradient(135deg,rgba(255,79,201,.22),rgba(135,80,255,.23))}
+.sectionPanel{padding:18px;display:flex;flex-direction:column;justify-content:center}.sectionTitle{font-size:clamp(1.7rem,7vw,2.6rem);margin:0 0 5px;letter-spacing:-.04em}.sectionSub{margin:0 0 14px;color:var(--muted);font-size:.85rem;line-height:1.35}.detailList{display:grid;gap:9px}.detail{display:grid;grid-template-columns:42px 1fr;gap:10px;padding:11px;border-radius:17px;background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.11);align-items:center}.ico{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:rgba(255,255,255,.1)}.detail strong{display:block;font-size:.82rem}.detail span{display:block;color:#e4d5ec;font-size:.76rem;line-height:1.3;margin-top:2px}.actionRow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.btn{min-height:48px;border:0;border-radius:999px;padding:11px 14px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:7px;font-weight:1000;font-size:.78rem}.btn.primary{color:#230a2d;background:linear-gradient(90deg,var(--pink2),var(--gold),var(--cyan))}.btn.ghost{color:#fff;background:rgba(255,255,255,.085);border:1px solid var(--stroke)}
+.gifts{display:grid;grid-template-columns:1fr 1fr;gap:10px}.gift{padding:13px;border-radius:20px;background:rgba(255,255,255,.07);border:1px solid var(--stroke)}.gift h3{margin:0 0 8px;font-size:1rem}.gift ul{margin:0;padding-left:18px;color:#ebdff3;font-size:.75rem;line-height:1.5}.giftNote{margin:11px 0 0;text-align:center;color:#ffe8f8;font-size:.78rem}
+.rsvpForm{display:grid;gap:10px}.field label{display:block;font-weight:900;font-size:.76rem;margin:0 0 5px}.field input,.field select{width:100%;border:1px solid var(--stroke);background:rgba(255,255,255,.08);color:#fff;padding:12px 13px;border-radius:15px;outline:none}.field select option{color:#111}.rsvpMsg{font-size:.76rem;color:#d9c9e5;line-height:1.35}
+.gamePanel{padding:16px;display:grid;grid-template-rows:auto 1fr auto;gap:10px}.gameHeader{text-align:center}.gameHeader h2{margin:0;font-size:clamp(1.5rem,6vw,2.25rem)}.gameHeader p{margin:5px 0 0;color:var(--muted);font-size:.79rem}.gameBar{display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:8px}.counter{padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--stroke);font-weight:1000;font-size:.75rem}.arena{position:relative;min-height:0;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:radial-gradient(circle at 50% 50%,rgba(118,234,255,.08),transparent 48%),linear-gradient(180deg,rgba(22,5,40,.92),rgba(57,13,77,.94))}.arena::before{content:"";position:absolute;inset:0;opacity:.22;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:22px 22px}.monster{position:absolute;width:58px;height:58px;border:0;border-radius:50%;display:grid;place-items:center;font-size:2rem;cursor:pointer;background:radial-gradient(circle at 35% 30%,#ff91df,#6e2c8e 68%,#250c36);box-shadow:0 0 0 2px rgba(255,255,255,.13),0 10px 25px rgba(0,0,0,.32);animation:bob 1.3s ease-in-out infinite alternate}.monster:nth-child(odd){animation-duration:1s}.monster.gone{animation:pop .25s ease forwards;pointer-events:none}.missionDone{position:absolute;inset:0;display:grid;place-items:center;padding:20px;background:rgba(15,3,25,.88);backdrop-filter:blur(10px);z-index:10;text-align:center}.missionDone h3{font-size:2rem;margin:0 0 8px}.missionDone p{margin:0 0 14px;color:#f4e7fa}.gameFooter{display:flex;gap:8px}.gameFooter .btn{flex:1}
+@keyframes bob{from{transform:translateY(-4px) rotate(-3deg)}to{transform:translateY(5px) rotate(4deg)}}@keyframes pop{to{transform:scale(1.9) rotate(25deg);opacity:0;filter:blur(5px)}}
+.nav{position:absolute;z-index:25;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));height:66px;border-radius:24px;background:rgba(13,3,23,.83);border:1px solid var(--stroke);backdrop-filter:blur(20px);box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(5,1fr);padding:7px;gap:4px}.nav button{border:0;background:transparent;color:#cbb9d9;border-radius:16px;font-size:.62rem;font-weight:950;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px}.nav button b{font-size:1rem}.nav button.on{color:#fff;background:linear-gradient(180deg,rgba(255,79,201,.22),rgba(135,80,255,.18));box-shadow:inset 0 0 0 1px rgba(255,255,255,.11)}
+.toast{position:absolute;z-index:60;left:50%;top:max(56px,calc(env(safe-area-inset-top) + 46px));transform:translate(-50%,-12px);opacity:0;padding:9px 13px;border-radius:999px;background:#21102e;border:1px solid var(--stroke);font-size:.76rem;font-weight:900;transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
+.musicMini{position:absolute;z-index:24;left:12px;top:max(12px,env(safe-area-inset-top));transform:translateY(38px);padding:6px 9px;border-radius:999px;background:rgba(13,3,23,.65);border:1px solid var(--stroke);font-size:.64rem;color:#d8c7e4;pointer-events:none;max-width:54vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.confetti{position:absolute;z-index:15;pointer-events:none;width:9px;height:14px;border-radius:2px;background:var(--pink);animation:fall 1.4s linear forwards}@keyframes fall{from{transform:translateY(-20px) rotate(0);opacity:1}to{transform:translateY(360px) rotate(480deg);opacity:0}}
+@media(max-width:420px){.panel{border-radius:24px}.homePanel{grid-template-rows:minmax(165px,42%) auto 1fr}.quickGrid{gap:8px;padding:9px 11px 12px}.quick{min-height:58px}.quick b{font-size:1.12rem}.quick span{font-size:.69rem}.sectionPanel{padding:15px}.detail{padding:9px}.actionRow{margin-top:9px}.gifts{gap:8px}.gift{padding:11px}.gift ul{font-size:.7rem}.monster{width:52px;height:52px;font-size:1.8rem}.nav{height:62px}.view{padding-bottom:max(86px,calc(env(safe-area-inset-bottom) + 72px))}}
+</style>
 </head>
 <body>
-<div class="stars"></div>
-
-<div class="lang-switch" aria-label="Language selector">
-  <button id="btnEs" class="active">ES</button><button id="btnEn">EN</button>
-</div>
-
-<section id="intro" aria-label="Bienvenida">
-  <div class="intro-worlds" aria-hidden="true"><div class="intro-half demon"></div><div class="intro-half sofia"></div></div><div class="intro-seam" aria-hidden="true"></div>
-  <video id="welcomeVideo" src="bienvenida.mp4" playsinline muted preload="auto"></video>
-  <div class="intro-card">
-    <div class="eyebrow" data-i18n="introEyebrow">Una celebración mágica ✦</div>
-    <div class="intro-title">Eluney &<br>Leilani</div>
-    <p class="intro-copy" data-i18n="introCopy">¡Bienvenidos! Los invitamos a celebrar con nosotras nuestros 3 años este 14 de noviembre.</p>
-    <div class="intro-actions">
-      <button class="pill primary" id="playIntro" data-i18n="playIntro">🎵 Entrar con música</button>
-      <button class="pill ghost" id="openInvite" data-i18n="openInvite">Abrir invitación ✨</button>
-    </div>
-    <div class="music-hint" data-i18n="musicHint">🎵 Golden • HUNTR/X → Sofia the First Theme</div><div class="tiny" data-i18n="introNote">En iPhone la música empieza después de tocar el botón.</div>
+<div id="app">
+  <div class="sparkles"></div>
+  <div class="topbar">
+    <div><span class="brand">Eluney & Leilani ✨</span><button class="audioBtn" id="audioBtn" aria-label="Música">🔊</button></div>
+    <div class="lang"><button id="es" class="on">ES</button><button id="en">EN</button></div>
   </div>
-</section>
+  <div id="musicMini" class="musicMini">🎵 Golden • HUNTR/X</div>
 
-<main>
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="portrait-grid" aria-label="Temas de las cumpleañeras">
-        <div class="portrait left">
-          <img alt="Rumi, Mira y Zoey, inspiración Demon Hunters" src="https://static.kino.de/d4/f4/53/b51f9828369e225efb65285f44_cmUgMTIwMCAxMjAwIGMgbQNkNGJmMjYyZTY4NA%3D%3D.jpeg" referrerpolicy="no-referrer" />
-          <div class="portrait-label"><strong>Eluney</strong><span data-i18n="eluneyTheme">Demon Hunters • Rumi, Mira & Zoey</span></div>
+  <div class="views">
+    <section class="view active" data-view="home">
+      <div class="panel homePanel">
+        <div class="heroSplit">
+          <div class="heroHalf left"><img src="https://occ-0-3011-116.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABUkdNWTnIZAk6sL7Qu9yj_WcWTer6m7ocUpllNk6O0hllCT6t2Hx0xySVgESEHpHGp9oYWshlYd0I_sMErwsSzU-9dIUTTMRQK1Z.jpg?r=983" alt="Demon Hunters"><div class="heroLabel"><strong>Eluney</strong><span data-k="eluneyTheme">Demon Hunters • Rumi, Mira & Zoey</span></div></div>
+          <div class="heroHalf right"><img src="https://is3-ssl.mzstatic.com/image/thumb/Video113/v4/cb/af/22/cbaf22ff-ba22-1a9f-27cf-ec87b7a96dee/pr_source.lsr/1200x675.jpg" alt="Princesa Sofía"><div class="heroLabel"><strong>Leilani</strong><span data-k="leilaniTheme">Princesa Sofía • magia real</span></div></div>
+          <div class="seam"></div>
         </div>
-        <div class="portrait right">
-          <img alt="Princesa Sofía" src="https://is3-ssl.mzstatic.com/image/thumb/Video113/v4/cb/af/22/cbaf22ff-ba22-1a9f-27cf-ec87b7a96dee/pr_source.lsr/1200x675.jpg" referrerpolicy="no-referrer" />
-          <div class="portrait-label"><strong>Leilani</strong><span data-i18n="leilaniTheme">Princesa Sofía • magia real</span></div>
+        <div class="homeCopy"><div class="badge" data-k="badge">⚔️ Neón + 👑 Reino mágico</div><div class="names">Eluney & Leilani</div><div class="turn3" data-k="turn3">¡Cumplen 3 años! 🎂✨</div><div class="when" data-k="when">Sábado 14 de noviembre • desde las 5:00 p. m.</div></div>
+        <div class="quickGrid">
+          <button class="quick" data-go="details"><b>📍</b><span data-k="qDetails">Detalles</span></button>
+          <button class="quick" data-go="gifts"><b>🎁</b><span data-k="qGifts">Regalos</span></button>
+          <button class="quick" data-go="rsvp"><b>💌</b><span data-k="qRsvp">Confirmar</span></button>
+          <button class="quick game" data-go="game"><b>👾</b><span data-k="qGame">Jugar</span></button>
         </div>
       </div>
-      <div class="badge" data-i18n="badge">⚔️ Neon + 👑 Reino mágico</div>
-      <h1>Eluney <span style="font-size:.5em;color:#ffd978">&</span><br>Leilani</h1>
-      <p class="turn3" data-i18n="turn3">¡Cumplen 3 años! 🎂✨</p>
-      <p class="date" data-i18n="heroDate">Sábado • 14 de noviembre de 2026 • 5:00 p. m.</p>
-      <p class="subtitle" data-i18n="subtitle">Dos mundos mágicos se unen para una celebración muy especial. Acompáñanos a festejar a Eluney y Leilani.</p>
-      <div class="hero-actions"><a class="pill primary" href="#details" data-i18n="seeDetails">Ver detalles</a><button class="pill ghost" id="shareBtn" data-i18n="share">Compartir</button></div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="details"><div class="wrap"><div class="glass">
-    <h2 class="section-title" data-i18n="detailsTitle">Detalles de la fiesta ✨</h2>
-    <p class="section-copy" data-i18n="detailsCopy">La fiesta será en casa de la mamá de Anel. Puedes tocar “Ver ubicación” para abrir el mapa.</p>
-    <div class="details">
-      <div class="detail"><div class="ico">🎂</div><div><strong data-i18n="celebrateLabel">Celebramos</strong><span data-i18n="celebrateValue">Los 3 años de Eluney y Leilani.</span></div></div>
-      <div class="detail"><div class="ico">📅</div><div><strong data-i18n="dateLabel">Fecha</strong><span data-i18n="dateValue">Sábado 14 de noviembre de 2026.</span></div></div>
-      <div class="detail"><div class="ico">🕔</div><div><strong data-i18n="timeLabel">Hora</strong><span data-i18n="timeValue">Desde las 5:00 p. m.</span></div></div>
-      <div class="detail"><div class="ico">📍</div><div><strong data-i18n="placeLabel">Lugar</strong><span>727 W 8th Street, San Bernardino, CA 92410</span></div></div>
-    </div>
-    <div class="actions-grid">
-      <a class="action" href="https://www.google.com/maps/search/?api=1&query=727%20W%208th%20Street%2C%20San%20Bernardino%2C%20CA%2092410" target="_blank" rel="noopener" data-i18n="map">📍 Ver ubicación</a>
-      <button class="action alt" id="rsvpBtn" data-i18n="rsvp">✓ Confirmar asistencia</button>
-      <a class="action full" href="#gifts" data-i18n="giftBtn">🎁 Ideas de regalos</a>
-    </div>
-  </div></div></section>
+    <section class="view" data-view="details">
+      <div class="panel sectionPanel">
+        <h2 class="sectionTitle" data-k="detailsTitle">Detalles de la fiesta ✨</h2>
+        <p class="sectionSub" data-k="detailsSub">Todo lo que necesitas para acompañarnos.</p>
+        <div class="detailList">
+          <div class="detail"><div class="ico">🎂</div><div><strong data-k="celebrate">Celebramos</strong><span data-k="celebrateVal">Los 3 años de Eluney y Leilani.</span></div></div>
+          <div class="detail"><div class="ico">📅</div><div><strong data-k="dateLabel">Fecha</strong><span data-k="dateVal">Sábado 14 de noviembre de 2026.</span></div></div>
+          <div class="detail"><div class="ico">🕔</div><div><strong data-k="timeLabel">Hora</strong><span data-k="timeVal">Desde las 5:00 p. m.</span></div></div>
+          <div class="detail"><div class="ico">📍</div><div><strong data-k="placeLabel">Lugar</strong><span>727 W 8th Street, San Bernardino, CA 92410</span></div></div>
+        </div>
+        <div class="actionRow"><a class="btn primary" target="_blank" href="https://maps.apple.com/?q=727+W+8th+Street,+San+Bernardino,+CA+92410" data-k="map">📍 Ver ubicación</a><a class="btn ghost" id="calendar" href="#" data-k="calendar">📆 Calendario</a></div>
+      </div>
+    </section>
 
-  <section class="section" style="padding-top:0"><div class="wrap"><div class="glass">
-    <h2 class="section-title" data-i18n="countTitle">Cuenta regresiva 💫</h2>
-    <p class="section-copy" data-i18n="countCopy">Cada vez falta menos para la gran fiesta.</p>
-    <div class="countdown"><div class="timebox"><span class="num" id="days">--</span><span class="lbl" data-i18n="days">Días</span></div><div class="timebox"><span class="num" id="hours">--</span><span class="lbl" data-i18n="hours">Horas</span></div><div class="timebox"><span class="num" id="mins">--</span><span class="lbl" data-i18n="mins">Min</span></div><div class="timebox"><span class="num" id="secs">--</span><span class="lbl" data-i18n="secs">Seg</span></div></div>
-  </div></div></section>
+    <section class="view" data-view="gifts">
+      <div class="panel sectionPanel">
+        <h2 class="sectionTitle" data-k="giftsTitle">Ideas de regalos 🎁</h2>
+        <p class="sectionSub" data-k="giftsSub">Si te gustaría llevarles un detalle, aquí tienes algunas ideas. Es completamente opcional. 💜</p>
+        <div class="gifts">
+          <div class="gift"><h3>⚔️ Eluney</h3><ul><li data-k="e1">KPop Demon Hunters</li><li data-k="e2">Rumi, Mira o Zoey</li><li data-k="e3">Muñecas, peluches o figuras</li><li data-k="e4">Arte y juegos creativos para 3+</li></ul></div>
+          <div class="gift"><h3>👑 Leilani</h3><ul><li data-k="l1">Princesa Sofía</li><li data-k="l2">Coronas o juegos de princesa</li><li data-k="l3">Peluches y cuentos</li><li data-k="l4">Juegos creativos para 3+</li></ul></div>
+        </div>
+        <p class="giftNote" data-k="giftNote">💝 Lo más importante es celebrar contigo.</p>
+      </div>
+    </section>
 
-  <section class="section" style="padding-top:0" id="gifts"><div class="wrap"><div class="glass">
-    <h2 class="section-title" data-i18n="giftsTitle">Ideas de regalos 🎁</h2>
-    <p class="section-copy" data-i18n="giftsCopy">Si te gustaría llevarles un detalle, aquí tienes algunas ideas de cosas que les encantan. El regalo es completamente opcional. 💜</p>
-    <div class="gift-grid">
-      <article class="gift-card eluney"><h3>⚔️ Eluney</h3><ul><li data-i18n="eGift1">Juguetes o accesorios de KPop Demon Hunters</li><li data-i18n="eGift2">Rumi, Mira o Zoey</li><li data-i18n="eGift3">Muñecas, peluches o figuras</li><li data-i18n="eGift4">Arte, música y juegos creativos para 3+</li></ul></article>
-      <article class="gift-card leilani"><h3>👑 Leilani</h3><ul><li data-i18n="lGift1">Princesa Sofía</li><li data-i18n="lGift2">Muñecas, coronas o juegos de princesa</li><li data-i18n="lGift3">Peluches y cuentos infantiles</li><li data-i18n="lGift4">Juegos creativos y rompecabezas para 3+</li></ul></article>
-    </div>
-    <div class="gift-note" data-i18n="giftNote">💝 Lo más importante para ellas es celebrar contigo.</div>
-  </div></div></section>
+    <section class="view" data-view="rsvp">
+      <div class="panel sectionPanel">
+        <h2 class="sectionTitle" data-k="rsvpTitle">Confirmar asistencia 💖</h2>
+        <p class="sectionSub" data-k="rsvpSub">Dinos quién viene y te preparamos un mensaje para WhatsApp.</p>
+        <div class="rsvpForm">
+          <div class="field"><label data-k="nameLabel">Tu nombre</label><input id="name" placeholder="Nombre"></div>
+          <div class="field"><label data-k="guestsLabel">¿Cuántas personas asistirán?</label><select id="guests"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
+          <div class="actionRow"><button class="btn primary" id="wa" data-k="wa">Abrir WhatsApp</button><button class="btn ghost" id="copy" data-k="copy">Copiar mensaje</button></div>
+          <div class="rsvpMsg" data-k="rsvpHint">También puedes regresar al inicio usando el botón de abajo.</div>
+        </div>
+      </div>
+    </section>
 
-  <section class="section" style="padding-top:0"><div class="wrap"><div class="glass" style="text-align:center">
-    <h2 class="section-title" data-i18n="seeYou">¡Te esperamos! 💖</h2>
-    <p class="section-copy" data-i18n="seeYouCopy">Guarda la fecha y ven a celebrar una tarde llena de magia, música y diversión.</p>
-    <div class="hero-actions"><button class="pill primary" id="rsvpBtn2" data-i18n="rsvp">✓ Confirmar asistencia</button><a class="pill ghost" id="calendarBtn" href="#" data-i18n="calendar">📆 Agregar al calendario</a></div>
-  </div></div></section>
-  <div class="footer">Eluney & Leilani • 3 años • 14.11.2026 ✨</div>
-</main>
-
-<div class="music-dock hidden" id="musicDock" aria-live="polite"><span class="music-icon">🎵</span><div class="track"><span id="trackName">Golden</span><span class="sub" id="trackArtist">HUNTR/X</span></div><button id="musicToggle" aria-label="Pausar música">⏸</button><button id="musicNext" aria-label="Siguiente canción">⏭</button></div>
-
-<audio id="partyMusic" preload="auto"></audio>
-
-<div class="modal hidden" id="rsvpModal" role="dialog" aria-modal="true">
-  <div class="modal-card">
-    <div class="modal-head"><h3 data-i18n="rsvpTitle">Confirmar asistencia 💖</h3><button class="close" id="closeModal">×</button></div>
-    <p class="section-copy" style="margin-top:8px" data-i18n="rsvpCopy">Llena estos datos y te prepararemos un mensaje para enviar por WhatsApp.</p>
-    <div class="field"><label data-i18n="nameLabel">Tu nombre</label><input id="guestName" autocomplete="name" /></div>
-    <div class="field"><label data-i18n="guestsLabel">¿Cuántas personas asistirán?</label><select id="guestCount"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select></div>
-    <div class="modal-actions"><button class="pill primary" id="sendRsvp" data-i18n="sendRsvp">Abrir WhatsApp</button><button class="pill ghost" id="copyRsvp" data-i18n="copyRsvp">Copiar mensaje</button></div>
+    <section class="view" data-view="game">
+      <div class="panel gamePanel">
+        <div class="gameHeader"><h2 data-k="gameTitle">¡Ayúdanos a acabar con los monstruos! 👾</h2><p data-k="gameSub">Toca todos los monstruos antes de que invadan la fiesta.</p><div class="gameBar"><div class="counter" id="counter">0 / 10</div><button class="btn ghost" id="restart" data-k="restart">↻ Reiniciar</button></div></div>
+        <div class="arena" id="arena"><div class="missionDone hidden" id="done"><div><h3 data-k="doneTitle">✨ ¡Misión cumplida! ✨</h3><p data-k="doneText">¡Eluney y Leilani están listas para la fiesta! 🎉</p><button class="btn primary" id="again" data-k="again">Jugar otra vez</button></div></div></div>
+        <div class="gameFooter"><button class="btn ghost" data-go="home" data-k="backHome">🏠 Volver al inicio</button></div>
+      </div>
+    </section>
   </div>
+
+  <nav class="nav">
+    <button class="on" data-go="home"><b>🏠</b><span data-k="navHome">Inicio</span></button>
+    <button data-go="details"><b>📍</b><span data-k="navDetails">Detalles</span></button>
+    <button data-go="gifts"><b>🎁</b><span data-k="navGifts">Regalos</span></button>
+    <button data-go="rsvp"><b>💌</b><span data-k="navRsvp">RSVP</span></button>
+    <button data-go="game"><b>👾</b><span data-k="navGame">Juego</span></button>
+  </nav>
+  <audio id="audio" preload="none"></audio>
+  <div id="toast" class="toast"></div>
 </div>
-<div class="toast" id="toast">✓</div>
-
 <script>
-const translations={
- es:{introEyebrow:'Una celebración mágica ✦',introCopy:'¡Bienvenidos! Los invitamos a celebrar con nosotras nuestros 3 años este 14 de noviembre.',playIntro:'🎵 Entrar con música',openInvite:'Abrir invitación ✨',musicHint:'🎵 Golden • HUNTR/X → Tema de Princesa Sofía',introNote:'En iPhone la música empieza después de tocar el botón.',eluneyTheme:'Demon Hunters • Rumi, Mira & Zoey',leilaniTheme:'Princesa Sofía • magia real',badge:'⚔️ Neon + 👑 Reino mágico',turn3:'¡Cumplen 3 años! 🎂✨',heroDate:'Sábado • 14 de noviembre de 2026 • 5:00 p. m.',subtitle:'Dos mundos mágicos se unen para una celebración muy especial. Acompáñanos a festejar a Eluney y Leilani.',seeDetails:'Ver detalles',share:'Compartir',detailsTitle:'Detalles de la fiesta ✨',detailsCopy:'La fiesta será en casa de la mamá de Anel. Puedes tocar “Ver ubicación” para abrir el mapa.',celebrateLabel:'Celebramos',celebrateValue:'Los 3 años de Eluney y Leilani.',dateLabel:'Fecha',dateValue:'Sábado 14 de noviembre de 2026.',timeLabel:'Hora',timeValue:'Desde las 5:00 p. m.',placeLabel:'Lugar',map:'📍 Ver ubicación',rsvp:'✓ Confirmar asistencia',giftBtn:'🎁 Ideas de regalos',countTitle:'Cuenta regresiva 💫',countCopy:'Cada vez falta menos para la gran fiesta.',days:'Días',hours:'Horas',mins:'Min',secs:'Seg',giftsTitle:'Ideas de regalos 🎁',giftsCopy:'Si te gustaría llevarles un detalle, aquí tienes algunas ideas de cosas que les encantan. El regalo es completamente opcional. 💜',eGift1:'Juguetes o accesorios de KPop Demon Hunters',eGift2:'Rumi, Mira o Zoey',eGift3:'Muñecas, peluches o figuras',eGift4:'Arte, música y juegos creativos para 3+',lGift1:'Princesa Sofía',lGift2:'Muñecas, coronas o juegos de princesa',lGift3:'Peluches y cuentos infantiles',lGift4:'Juegos creativos y rompecabezas para 3+',giftNote:'💝 Lo más importante para ellas es celebrar contigo.',seeYou:'¡Te esperamos! 💖',seeYouCopy:'Guarda la fecha y ven a celebrar una tarde llena de magia, música y diversión.',calendar:'📆 Agregar al calendario',rsvpTitle:'Confirmar asistencia 💖',rsvpCopy:'Llena estos datos y te prepararemos un mensaje para enviar por WhatsApp.',nameLabel:'Tu nombre',guestsLabel:'¿Cuántas personas asistirán?',sendRsvp:'Abrir WhatsApp',copyRsvp:'Copiar mensaje',copied:'Mensaje copiado ✨',shareText:'¡Estás invitado al cumpleaños de Eluney y Leilani! 🎂 14 de noviembre de 2026 desde las 5:00 p. m.'},
- en:{introEyebrow:'A magical celebration ✦',introCopy:'Welcome! You are invited to celebrate our 3rd birthday with us this November 14.',playIntro:'🎵 Enter with music',openInvite:'Open invitation ✨',musicHint:'🎵 Golden • HUNTR/X → Sofia the First Theme',introNote:'On iPhone, music starts after you tap the button.',eluneyTheme:'Demon Hunters • Rumi, Mira & Zoey',leilaniTheme:'Princess Sofia • royal magic',badge:'⚔️ Neon + 👑 Magical kingdom',turn3:'Turning 3! 🎂✨',heroDate:'Saturday • November 14, 2026 • 5:00 p.m.',subtitle:'Two magical worlds come together for one very special celebration. Join us to celebrate Eluney and Leilani.',seeDetails:'See details',share:'Share',detailsTitle:'Party details ✨',detailsCopy:'The party will be at Anel’s mom’s house. Tap “View location” to open the map.',celebrateLabel:'Celebrating',celebrateValue:'Eluney and Leilani turning 3.',dateLabel:'Date',dateValue:'Saturday, November 14, 2026.',timeLabel:'Time',timeValue:'From 5:00 p.m.',placeLabel:'Location',map:'📍 View location',rsvp:'✓ RSVP',giftBtn:'🎁 Gift ideas',countTitle:'Countdown 💫',countCopy:'The big party is getting closer!',days:'Days',hours:'Hours',mins:'Min',secs:'Sec',giftsTitle:'Gift ideas 🎁',giftsCopy:'If you would like to bring them a little gift, here are a few ideas of things they love. Gifts are completely optional. 💜',eGift1:'KPop Demon Hunters toys or accessories',eGift2:'Rumi, Mira or Zoey',eGift3:'Dolls, plush toys or figures',eGift4:'Art, music and creative toys for ages 3+',lGift1:'Princess Sofia',lGift2:'Dolls, crowns or princess play sets',lGift3:'Plush toys and children’s books',lGift4:'Creative toys and puzzles for ages 3+',giftNote:'💝 The most important gift is celebrating together.',seeYou:'We can’t wait to see you! 💖',seeYouCopy:'Save the date and come celebrate an afternoon full of magic, music and fun.',calendar:'📆 Add to calendar',rsvpTitle:'RSVP 💖',rsvpCopy:'Fill this out and we’ll prepare a WhatsApp message for you.',nameLabel:'Your name',guestsLabel:'How many people are coming?',sendRsvp:'Open WhatsApp',copyRsvp:'Copy message',copied:'Message copied ✨',shareText:'You’re invited to Eluney & Leilani’s 3rd birthday! 🎂 November 14, 2026 from 5:00 p.m.'}
+const T={
+ es:{eluneyTheme:"Demon Hunters • Rumi, Mira & Zoey",leilaniTheme:"Princesa Sofía • magia real",badge:"⚔️ Neón + 👑 Reino mágico",turn3:"¡Cumplen 3 años! 🎂✨",when:"Sábado 14 de noviembre • desde las 5:00 p. m.",qDetails:"Detalles",qGifts:"Regalos",qRsvp:"Confirmar",qGame:"Jugar",detailsTitle:"Detalles de la fiesta ✨",detailsSub:"Todo lo que necesitas para acompañarnos.",celebrate:"Celebramos",celebrateVal:"Los 3 años de Eluney y Leilani.",dateLabel:"Fecha",dateVal:"Sábado 14 de noviembre de 2026.",timeLabel:"Hora",timeVal:"Desde las 5:00 p. m.",placeLabel:"Lugar",map:"📍 Ver ubicación",calendar:"📆 Calendario",giftsTitle:"Ideas de regalos 🎁",giftsSub:"Si te gustaría llevarles un detalle, aquí tienes algunas ideas. Es completamente opcional. 💜",e1:"KPop Demon Hunters",e2:"Rumi, Mira o Zoey",e3:"Muñecas, peluches o figuras",e4:"Arte y juegos creativos para 3+",l1:"Princesa Sofía",l2:"Coronas o juegos de princesa",l3:"Peluches y cuentos",l4:"Juegos creativos para 3+",giftNote:"💝 Lo más importante es celebrar contigo.",rsvpTitle:"Confirmar asistencia 💖",rsvpSub:"Dinos quién viene y te preparamos un mensaje para WhatsApp.",nameLabel:"Tu nombre",guestsLabel:"¿Cuántas personas asistirán?",wa:"Abrir WhatsApp",copy:"Copiar mensaje",rsvpHint:"También puedes regresar al inicio usando el botón de abajo.",gameTitle:"¡Ayúdanos a acabar con los monstruos! 👾",gameSub:"Toca todos los monstruos antes de que invadan la fiesta.",restart:"↻ Reiniciar",doneTitle:"✨ ¡Misión cumplida! ✨",doneText:"¡Eluney y Leilani están listas para la fiesta! 🎉",again:"Jugar otra vez",backHome:"🏠 Volver al inicio",navHome:"Inicio",navDetails:"Detalles",navGifts:"Regalos",navRsvp:"RSVP",navGame:"Juego"},
+ en:{eluneyTheme:"Demon Hunters • Rumi, Mira & Zoey",leilaniTheme:"Princess Sofia • royal magic",badge:"⚔️ Neon + 👑 Magical kingdom",turn3:"Turning 3! 🎂✨",when:"Saturday, November 14 • from 5:00 p.m.",qDetails:"Details",qGifts:"Gifts",qRsvp:"RSVP",qGame:"Play",detailsTitle:"Party details ✨",detailsSub:"Everything you need to celebrate with us.",celebrate:"Celebrating",celebrateVal:"Eluney and Leilani turning 3.",dateLabel:"Date",dateVal:"Saturday, November 14, 2026.",timeLabel:"Time",timeVal:"From 5:00 p.m.",placeLabel:"Location",map:"📍 View location",calendar:"📆 Calendar",giftsTitle:"Gift ideas 🎁",giftsSub:"If you'd like to bring them a little gift, here are a few ideas. Gifts are completely optional. 💜",e1:"KPop Demon Hunters",e2:"Rumi, Mira or Zoey",e3:"Dolls, plush toys or figures",e4:"Creative art and toys for ages 3+",l1:"Princess Sofia",l2:"Crowns or princess play sets",l3:"Plush toys and books",l4:"Creative toys for ages 3+",giftNote:"💝 The most important gift is celebrating together.",rsvpTitle:"RSVP 💖",rsvpSub:"Tell us who's coming and we'll prepare a WhatsApp message.",nameLabel:"Your name",guestsLabel:"How many people are coming?",wa:"Open WhatsApp",copy:"Copy message",rsvpHint:"You can return home using the button below.",gameTitle:"Help us defeat the monsters! 👾",gameSub:"Tap every monster before they invade the party.",restart:"↻ Restart",doneTitle:"✨ Mission complete! ✨",doneText:"Eluney and Leilani are ready for the party! 🎉",again:"Play again",backHome:"🏠 Back home",navHome:"Home",navDetails:"Details",navGifts:"Gifts",navRsvp:"RSVP",navGame:"Game"}
 };
-let lang=localStorage.getItem('inviteLang')||'es';
-const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-function setLang(next){lang=next;localStorage.setItem('inviteLang',lang);document.documentElement.lang=lang;$('#btnEs').classList.toggle('active',lang==='es');$('#btnEn').classList.toggle('active',lang==='en');$$('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(translations[lang][k])el.textContent=translations[lang][k]});}
-$('#btnEs').onclick=()=>setLang('es');$('#btnEn').onclick=()=>setLang('en');setLang(lang);
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];let lang=localStorage.getItem("inviteLang")||"es";
+function setLang(v){lang=v;localStorage.setItem("inviteLang",v);document.documentElement.lang=v;$("#es").classList.toggle("on",v==="es");$("#en").classList.toggle("on",v==="en");$$('[data-k]').forEach(el=>{const k=el.dataset.k;if(T[v][k])el.textContent=T[v][k]})}
+$("#es").onclick=()=>setLang("es");$("#en").onclick=()=>setLang("en");setLang(lang);
+function showView(name){$$('.view').forEach(v=>v.classList.toggle('active',v.dataset.view===name));$$('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.go===name));if(name==='game'&&!gameStarted)startGame();}
+$$('[data-go]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.go)));
 
-const intro=$('#intro'), video=$('#welcomeVideo');
-const music=$('#partyMusic'), musicDock=$('#musicDock'), trackName=$('#trackName'), trackArtist=$('#trackArtist');
-const soundtrack=[
-  {key:'golden',title:'Golden',artist:'HUNTR/X',preview:null,apple:'https://music.apple.com/us/song/1824324836'},
-  {key:'sofia',title:'Sofia the First Main Title Theme',artist:'The Cast of Sofia the First',preview:null,apple:'https://music.apple.com/us/song/1440651829'}
+const audio=$("#audio"),audioBtn=$("#audioBtn"),musicMini=$("#musicMini");let audioEnabled=true,trackIndex=0;
+const tracks=[
+ {title:"Golden",artist:"HUNTR/X",lookup:"1824324836",preview:null},
+ {title:"Sofia the First Main Title Theme",artist:"The Cast of Sofia the First",lookup:"1440651829",preview:null}
 ];
-let trackIndex=0;
-function loadApplePreviews(){
-  window.goldenPreview=function(data){const r=data&&data.results&&data.results[0];if(r&&r.previewUrl)soundtrack[0].preview=r.previewUrl};
-  window.sofiaPreview=function(data){const r=data&&data.results&&data.results[0];if(r&&r.previewUrl)soundtrack[1].preview=r.previewUrl};
-  [['1824324836','goldenPreview'],['1440651829','sofiaPreview']].forEach(([id,cb])=>{const sc=document.createElement('script');sc.src=`https://itunes.apple.com/lookup?id=${id}&callback=${cb}`;sc.async=true;document.head.appendChild(sc)});
-}
-loadApplePreviews();
-function updateMusicDock(){const t=soundtrack[trackIndex];trackName.textContent=t.title;trackArtist.textContent=t.artist;$('#musicToggle').textContent=music.paused?'▶':'⏸'}
-async function playTrack(i){trackIndex=(i+soundtrack.length)%soundtrack.length;const t=soundtrack[trackIndex];if(!t.preview){toast(lang==='es'?'La vista previa de música aún está cargando 🎵':'Music preview is still loading 🎵');return false}music.src=t.preview;music.currentTime=0;try{await music.play();musicDock.classList.remove('hidden');updateMusicDock();return true}catch(e){toast(lang==='es'?'Toca de nuevo para activar el audio 🎵':'Tap again to enable audio 🎵');return false}}
-music.addEventListener('ended',()=>playTrack(trackIndex+1));music.addEventListener('play',updateMusicDock);music.addEventListener('pause',updateMusicDock);
-$('#musicToggle').onclick=async()=>{if(music.paused){try{await music.play()}catch(e){}}else music.pause();updateMusicDock()};
-$('#musicNext').onclick=()=>playTrack(trackIndex+1);
-$('#playIntro').onclick=async()=>{try{video.currentTime=0;video.muted=true;await video.play()}catch(e){}await playTrack(0);burst(innerWidth/2,innerHeight*.58);setTimeout(()=>openInvite(),3000)};
-function openInvite(){document.body.classList.add('open');intro.classList.add('out');try{video.pause()}catch(e){}setTimeout(()=>intro.classList.add('hidden'),750)}
-$('#openInvite').onclick=openInvite;video.onended=openInvite;
+function loadTracks(){tracks.forEach((t,i)=>{const cb='itunesCb'+i;window[cb]=d=>{const r=d&&d.results&&d.results[0];if(r&&r.previewUrl)t.preview=r.previewUrl;if(i===0)tryAutoPlay()};const s=document.createElement('script');s.src='https://itunes.apple.com/lookup?id='+t.lookup+'&callback='+cb;document.head.appendChild(s)})}
+function updateMusic(){const t=tracks[trackIndex];musicMini.textContent='🎵 '+t.title+' • '+t.artist;audioBtn.textContent=audioEnabled&&!audio.paused?'🔊':'🔇'}
+async function playTrack(i){trackIndex=(i+tracks.length)%tracks.length;const t=tracks[trackIndex];if(!t.preview)return false;audio.src=t.preview;try{await audio.play();audioEnabled=true;updateMusic();return true}catch(e){return false}}
+async function tryAutoPlay(){if(!audioEnabled)return;const ok=await playTrack(trackIndex);if(!ok){document.addEventListener('pointerdown',firstTouch,{once:true,capture:true})}}
+async function firstTouch(){if(audioEnabled&&audio.paused)await playTrack(trackIndex)}
+audio.onended=()=>playTrack(trackIndex+1);audio.onplay=updateMusic;audio.onpause=updateMusic;
+audioBtn.onclick=async()=>{if(!audioEnabled){audioEnabled=true;await playTrack(trackIndex)}else if(audio.paused){await audio.play()}else{audio.pause();audioEnabled=false}updateMusic()};
+loadTracks();
 
-const partyDate=new Date('2026-11-14T17:00:00-08:00');
-function tick(){let d=partyDate-new Date();if(d<=0){$('#days').textContent='🎉';$('#hours').textContent='0';$('#mins').textContent='0';$('#secs').textContent='0';return}const days=Math.floor(d/86400000);d%=86400000;const hours=Math.floor(d/3600000);d%=3600000;const mins=Math.floor(d/60000);d%=60000;$('#days').textContent=days;$('#hours').textContent=String(hours).padStart(2,'0');$('#mins').textContent=String(mins).padStart(2,'0');$('#secs').textContent=String(Math.floor(d/1000)).padStart(2,'0')};tick();setInterval(tick,1000);
+function rsvpMessage(){const n=$("#name").value.trim()||(lang==='es'?'Invitado':'Guest'),g=$("#guests").value;return lang==='es'?'Hola, soy '+n+'. Confirmo asistencia al cumpleaños de Eluney y Leilani el 14 de noviembre. Asistiremos '+g+' persona(s). 🎉':'Hi, this is '+n+". I'm confirming for Eluney & Leilani's birthday on November 14. "+g+' person(s) will attend. 🎉'}
+$("#wa").onclick=()=>location.href='https://wa.me/?text='+encodeURIComponent(rsvpMessage());
+$("#copy").onclick=async()=>{try{await navigator.clipboard.writeText(rsvpMessage());toast(lang==='es'?'Mensaje copiado ✨':'Message copied ✨')}catch(e){prompt('',rsvpMessage())}};
+$("#calendar").onclick=e=>{e.preventDefault();const title=encodeURIComponent(lang==='es'?'Cumpleaños de Eluney y Leilani 🎂':'Eluney & Leilani Birthday 🎂'),loc=encodeURIComponent('727 W 8th Street, San Bernardino, CA 92410');window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text='+title+'&dates=20261115T010000Z/20261115T050000Z&location='+loc,'_blank')};
+function toast(t){const x=$("#toast");x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),1500)}
 
-const modal=$('#rsvpModal');function openModal(){modal.classList.remove('hidden')}function closeModal(){modal.classList.add('hidden')}$('#rsvpBtn').onclick=openModal;$('#rsvpBtn2').onclick=openModal;$('#closeModal').onclick=closeModal;modal.onclick=e=>{if(e.target===modal)closeModal()};
-function rsvpText(){const name=$('#guestName').value.trim()||(lang==='es'?'Invitado':'Guest');const n=$('#guestCount').value;return lang==='es'?`Hola, soy ${name}. Confirmo asistencia al cumpleaños de Eluney y Leilani el 14 de noviembre. Asistiremos ${n} persona(s). 🎉`:`Hi, this is ${name}. I’m confirming for Eluney & Leilani’s birthday on November 14. ${n} person(s) will attend. 🎉`}
-$('#sendRsvp').onclick=()=>{location.href='https://wa.me/?text='+encodeURIComponent(rsvpText())};
-$('#copyRsvp').onclick=async()=>{try{await navigator.clipboard.writeText(rsvpText());toast(translations[lang].copied)}catch(e){prompt('',rsvpText())}};
-$('#shareBtn').onclick=async()=>{const data={title:'Eluney & Leilani • 3',text:translations[lang].shareText,url:location.href};if(navigator.share){try{await navigator.share(data)}catch(e){}}else{try{await navigator.clipboard.writeText(location.href);toast(lang==='es'?'Enlace copiado ✨':'Link copied ✨')}catch(e){}}};
-$('#calendarBtn').onclick=e=>{e.preventDefault();const title=encodeURIComponent(lang==='es'?'Cumpleaños de Eluney y Leilani 🎂':'Eluney & Leilani Birthday 🎂');const details=encodeURIComponent(translations[lang].shareText);const loc=encodeURIComponent('727 W 8th Street, San Bernardino, CA 92410');window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=20261115T010000Z/20261115T050000Z&details=${details}&location=${loc}`,'_blank')};
-function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
-function burst(x,y){const icons=['✦','✨','💖','★','💫','👑'];for(let i=0;i<16;i++){const s=document.createElement('span');s.className='spark';s.textContent=icons[Math.floor(Math.random()*icons.length)];s.style.left=x+'px';s.style.top=y+'px';const a=Math.random()*Math.PI*2,r=55+Math.random()*120;s.style.setProperty('--x',Math.cos(a)*r+'px');s.style.setProperty('--y',Math.sin(a)*r+'px');document.body.appendChild(s);setTimeout(()=>s.remove(),900)}}
-document.addEventListener('click',e=>{if(e.target.closest('button,.action,.pill'))burst(e.clientX,e.clientY)});
+const arena=$("#arena"),done=$("#done"),counter=$("#counter");let hits=0,total=10,gameStarted=false;
+const monsters=['👾','👹','😈','👻'];
+function startGame(){gameStarted=true;hits=0;counter.textContent='0 / '+total;done.classList.add('hidden');arena.querySelectorAll('.monster,.confetti').forEach(x=>x.remove());requestAnimationFrame(()=>{const w=arena.clientWidth,h=arena.clientHeight;for(let i=0;i<total;i++){const b=document.createElement('button');b.className='monster';b.textContent=monsters[i%monsters.length];const size=w<360?52:58;const left=Math.max(4,Math.random()*(w-size-8));const top=Math.max(4,Math.random()*(h-size-8));b.style.left=left+'px';b.style.top=top+'px';b.style.animationDelay=(Math.random()*.7)+'s';b.onclick=()=>hitMonster(b);arena.appendChild(b)}})}
+function hitMonster(b){if(b.classList.contains('gone'))return;b.classList.add('gone');hits++;counter.textContent=hits+' / '+total;if(hits>=total)setTimeout(winGame,260)}
+function winGame(){done.classList.remove('hidden');for(let i=0;i<26;i++){const c=document.createElement('i');c.className='confetti';c.style.left=(Math.random()*100)+'%';c.style.top='-15px';c.style.background=['#ff4fc9','#ffe08d','#76eaff','#8750ff'][i%4];c.style.animationDelay=(Math.random()*.35)+'s';arena.appendChild(c)}}
+$("#restart").onclick=startGame;$("#again").onclick=startGame;
+
+// Prevent page scrolling/overscroll; navigation happens only through buttons.
+document.addEventListener('touchmove',e=>e.preventDefault(),{passive:false});
 </script>
 </body>
 </html>
